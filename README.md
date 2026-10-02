@@ -126,7 +126,8 @@ Meditation audio files are hosted separately and streamed at runtime.
 This project is for educational and portfolio purposes.
 
 ##  Author
-Mounadeep Sarkar
+
+Mounadeep Sarkar 
 
 Software Engineer
 
