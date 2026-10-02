@@ -127,11 +127,9 @@ This project is for educational and portfolio purposes.
 
 ##  Author
 
-Priyabrata Ray
+Mounadeep Sarkar 
 
 Software Engineer
 
-LinkedIn
-https://www.linkedin.com/in/priyabrata1998/
 
 ⭐ If you found this useful, please star the repository!
