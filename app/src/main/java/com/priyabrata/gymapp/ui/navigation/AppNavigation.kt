@@ -5,6 +5,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.ListAlt
+import androidx.compose.material.icons.filled.Restaurant
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -23,6 +24,8 @@ import com.priyabrata.gymapp.ui.gym.GymScreen
 import com.priyabrata.gymapp.ui.home.HomeScreen
 import com.priyabrata.gymapp.ui.log.LogScreen
 import com.priyabrata.gymapp.ui.meditation.MeditationScreen
+import com.priyabrata.gymapp.ui.diet.DietScreen
+import com.priyabrata.gymapp.ui.diet.DietDetailScreen
 
 @Composable
 fun AppNavigation() {
@@ -75,6 +78,20 @@ fun AppNavigation() {
                         }
                     }
                 )
+                NavigationBarItem(
+                    icon = { Icon(Icons.Default.Restaurant, contentDescription = "Diet") },
+                    label = { Text("Diet") },
+                    selected = currentRoute == "diet",
+                    onClick = {
+                        navController.navigate("diet") {
+                            popUpTo(navController.graph.findStartDestination().id) {
+                                saveState = true
+                            }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
+                    }
+                )
             }
         }
     ) { padding ->
@@ -89,6 +106,11 @@ fun AppNavigation() {
             }
             composable("gym") { GymScreen(navController) }
             composable("log") { LogScreen() }
+            composable("diet") { DietScreen(navController) }
+            composable("dietDetail/{category}") { backStackEntry ->
+                val category = backStackEntry.arguments?.getString("category") ?: ""
+                DietDetailScreen(categoryName = category, navController = navController)
+            }
 
             composable("equipment/{muscleGroup}") { backStackEntry ->
                 val muscleGroup = backStackEntry.arguments?.getString("muscleGroup") ?: ""
